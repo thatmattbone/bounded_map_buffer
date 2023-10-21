@@ -1,6 +1,6 @@
 # BoundedMapBuffer
 
-**TODO: Add description**
+A bounded circular buffer based on an elixir map.
 
 ## Installation
 
