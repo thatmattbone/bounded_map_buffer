@@ -26,6 +26,14 @@ defmodule BoundedMapBuffer do
     }
   end
 
+  def push_all(buffer = %BoundedMapBuffer{}, []) do
+    buffer
+  end
+
+  def push_all(buffer = %BoundedMapBuffer{}, [first | rest]) do
+    push_all(buffer |> BoundedMapBuffer.push(first), rest)
+  end
+
   def peek(buffer = %BoundedMapBuffer{}) when buffer.current_position == 0 do
     buffer.data_map[buffer.length - 1]
   end

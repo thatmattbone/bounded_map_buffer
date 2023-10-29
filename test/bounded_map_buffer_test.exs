@@ -41,6 +41,28 @@ defmodule BoundedMapBufferTest do
     }
   end
 
+  test "push_all buffer" do
+    buffer = BoundedMapBuffer.new(3)
+
+    buffer = BoundedMapBuffer.push_all(buffer, ["one"])
+
+    assert buffer.current_position == 1
+    assert buffer.data_map == %{
+      0 => "one",
+      1 => nil,
+      2 => nil
+    }
+
+    buffer = buffer |> BoundedMapBuffer.push_all(["two", "three", "four"])
+
+    assert buffer.current_position == 1
+    assert buffer.data_map == %{
+      0 => "four",
+      1 => "two",
+      2 => "three"
+    }
+  end
+
   test "buffer peek" do
     buffer = BoundedMapBuffer.new(5)
     buffer = buffer

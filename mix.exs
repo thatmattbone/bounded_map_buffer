@@ -1,28 +1,38 @@
 defmodule BoundedMapBuffer.MixProject do
   use Mix.Project
 
+  @version "0.1.1"
+  @github_url "https://github.com/thatmattbone/bounded_map_buffer"
+
   def project do
     [
       app: :bounded_map_buffer,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      package: package(),
+      deps: deps(),
+      name: "BoundedMapBuffer",
+      source_url: @github_url,
+      description: "A bounded circular buffer based on an elixir map."
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
-    [
-      extra_applications: [:logger]
-    ]
+    []
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
+    ]
+  end
+
+  defp package do
+    [
+      files: ~w(lib .formatter.exs mix.exs README.md LICENSE),
+      licenses: ["MIT"],
+      links: %{"GitHub" => @github_url}
     ]
   end
 end
