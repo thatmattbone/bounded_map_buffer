@@ -8,7 +8,7 @@ defmodule BoundedMapBuffer.MixProject do
     [
       app: :bounded_map_buffer,
       version: @version,
-      elixir: "~> 1.15",
+      elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       package: package(),
       deps: deps(),
